@@ -11,7 +11,10 @@
       "permissions": [
         "android.permission.ACTIVITY_RECOGNITION",
         "android.permission.RECEIVE_BOOT_COMPLETED"
-      ]
+      ],
+      "splash": {
+        "backgroundColor": "#ffffff"
+      }
     },
     "ios": {
       "supportsTablet": true
