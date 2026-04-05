@@ -1,15 +1,16 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Constants from 'expo-constants';
 
-// Replace with your computer's IP address
-const API_URL = 'https://lifeos-backend-017u.onrender.com';
+// CORRECT live backend URL
+const API_URL = 'https://lifeos-backend-017u.onrender.com/api';
 
 const api = axios.create({ baseURL: API_URL });
 
 api.interceptors.request.use(async (config) => {
   const token = await AsyncStorage.getItem('token');
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
