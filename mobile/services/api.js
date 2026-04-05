@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Correct live backend URL
-const API_URL = 'https://lifeos-backend-017u.onrender.com/api';
+const API_URL = 'https://lifeos-backend-oxne.onrender.com/api';
 
 const api = axios.create({ baseURL: API_URL });
 
