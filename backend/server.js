@@ -13,15 +13,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI)
+// Use MONGODB_URI (not MONGOODB_URL)
+const mongoURI = process.env.MONGODB_URI || process.env.MONGOODB_URL;
+if (!mongoURI) {
+  console.error('MONGODB_URI environment variable is not set');
+  process.exit(1);
+}
+
+mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
+  .catch(err => console.error('MongoDB connection error:', err));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/goals', goalRoutes);
 app.use('/api/actions', actionRoutes);
 app.use('/api/insights', insightRoutes);
 app.use('/api/assistant', assistantRoutes);
+
+// Simple test route
+app.get('/api/test', (req, res) => res.json({ message: 'API works' }));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
