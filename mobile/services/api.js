@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
 // Replace with your computer's IP address
-const API_URL = Constants.manifest?.extra?.API_URL || 'http://172.20.48.224:5000/api';
+const API_URL = 'https://lifeos-backend-017u.onrender.com';
 
 const api = axios.create({ baseURL: API_URL });
 
